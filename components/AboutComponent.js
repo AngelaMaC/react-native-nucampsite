@@ -25,26 +25,28 @@ class About extends Component  {
 
     static navigationOptions = {
         title: 'About Us'
-    };
+    }
 
-    render () {
-        const renderPartner = ({item}) => {
+
+renderPartner = ({item}) => {
             return (
                 <ListItem
                     title={item.name}
                     subtitle={item.description}
                     leftAvatar={{ source: require('./images/bootstrap-logo.png')}}
-                />
+                >
+                </ListItem>
             );
-        };
+        }
         
+    render() {
         return (
             <ScrollView>
                 <Mission />
                 <Card title='Community Partners'>
                     <FlatList
                     data={this.state.partners}
-                    renderItem={renderPartner}
+                    renderItem={this.renderPartner}
                     keyExtractor={item => item.id.toString()}
                     />
                 </Card>
