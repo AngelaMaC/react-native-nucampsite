@@ -38,11 +38,11 @@ class Directory extends Component {
             return (
                 <View>
                     <Text>{this.props.campsites.errMess}</Text>
-                </View>
+               </View>
             );
         }
         return (
-            <FlatList
+            <FlatList  
                 data={this.props.campsites.campsites}
                 renderItem={renderDirectoryItem}
                 keyExtractor={item => item.id.toString()}

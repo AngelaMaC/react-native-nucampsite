@@ -29,16 +29,16 @@ class About extends Component  {
     }
 
 
-    render() {
+render() {
     renderPartner = ({item}) => {
-                return (
-                    <ListItem
-                        title={item.name}
-                        subtitle={item.description}
-                        leftAvatar={{source: {uri: baseUrl + item.image}}}
-                    />
-                );
-            };
+                    return (
+                        <ListItem
+                            title={item.name}
+                            subtitle={item.description}
+                            leftAvatar={{source: {uri: baseUrl + item.image}}}
+                        />
+                    );
+                };
     
     if (this.props.partners.isLoading) {
             return (
@@ -68,7 +68,7 @@ class About extends Component  {
                 <Card title='Community Partners'>
                 <FlatList 
                     data={this.props.partners.partners}
-                    renderItem={this.renderPartner}
+                    renderItem={renderPartner}
                     keyExtractor={item => item.id.toString()}
                     />
                 </Card>
