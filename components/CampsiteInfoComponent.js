@@ -28,6 +28,8 @@ function RenderCampsite(props) {
 
     const recognizeDrag = ({dx}) => (dx < -200) ? true : false;
 
+    const recognizeComment = ({dx}) => (dx > -200) ? true : false;
+
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: () => true,
         onPanResponderGrant: () => {
@@ -54,6 +56,9 @@ function RenderCampsite(props) {
                     ],
                     { cancelable: false }
                 );
+            }
+            else if(recognizeComment(gestureState)) {
+                props.onShowModal();
             }
             return true;
         }
@@ -187,7 +192,8 @@ class CampsiteInfo extends Component {
                     onRequestClose={() => this.toggleModal()}>
                     <View style={styles.modal}>
                         <Rating
-                        showRatingstartngValue={this.state.rating}
+                        showRating 
+                        startingValue={this.state.rating}
                         imageSize={40}
                         onFinishRating={(rating)=>this.setState({rating: rating})} 
                         style={{paddingVertical: 10}}
